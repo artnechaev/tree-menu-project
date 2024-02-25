@@ -1,0 +1,7 @@
+{% extends 'base.html' %}
+{% load menu_tags %}
+
+{% block menus %}
+  {% draw_menu 'main_menu' sel_item %}
+  {% draw_menu 'another_menu' sel_item %}
+{% endblock %}

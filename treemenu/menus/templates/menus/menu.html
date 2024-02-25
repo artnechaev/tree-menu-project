@@ -1,0 +1,25 @@
+{% load menu_tags %}
+
+{% if parent is None %}
+  <h3>{{ menu }}</h3>
+{% endif %}
+
+<ul type="disc">
+  {% for item in items %}
+    {% if item.parent == parent %}
+      <li>
+        <a href="{{ item.get_absolute_url }}">
+          {% if item == sel_item %}
+            <b>{{ item.name }}</b>
+          {% else %}
+            {{ item.name }}
+          {% endif %}
+        </a>
+
+        {% if item.name in sel_item.path %}
+          {% draw_menu menu sel_item items parent=item %}
+        {% endif %}
+      </li>
+    {% endif %}
+  {% endfor %}
+</ul>
